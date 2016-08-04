@@ -24,6 +24,10 @@ env:
 before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
+install:
+  - xcrun simctl erase all
+  - open -b com.apple.iphonesimulator
+  
 script:
   - set -o pipefail
   - xcodebuild -version
