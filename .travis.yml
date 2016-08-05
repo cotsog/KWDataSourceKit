@@ -27,7 +27,7 @@ before_install:
 install:
   - xcrun simctl erase all
   - open -b com.apple.iphonesimulator
-  
+
 script:
   - set -o pipefail
   - xcodebuild -version
@@ -39,3 +39,6 @@ script:
     else
       xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build;
     fi
+
+after_script:
+  - sleep 5
