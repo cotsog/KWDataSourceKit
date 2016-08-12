@@ -23,6 +23,7 @@ before_install:
 
 before_script:
 - export DESTINATION="OS=$DEST_OS,name=$DEST_DEVICE"
+- instruments -s devices
 - export IOS_SIMULATOR_UDID=`instruments -s devices | grep "$DEST_DEVICE ($DEST_OS" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
 - echo $IOS_SIMULATOR_UDID
 - open -a "simulator" --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID
